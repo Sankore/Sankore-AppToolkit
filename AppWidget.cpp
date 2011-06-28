@@ -1,4 +1,6 @@
 #include <QDebug>
+#include <QUrl>
+#include <QWebPage>
 
 #include "AppWidget.h"
 #include "globalDefs.h"
@@ -23,7 +25,7 @@ AppWidget::AppWidget(QWidget *parent, const char *name):QWidget(parent)
 
     mpWebView = new QWebView(this);
     mpWebView->setStyleSheet(QString("background-color:white;"));
-    mpWebView->load(QUrl("http://www.google.ch"));
+    mpWebView->load(QUrl(""));
     mpSplitter->addWidget(mpWebView);
 
     mpSelectors = new QWidget(this);
@@ -34,7 +36,7 @@ AppWidget::AppWidget(QWidget *parent, const char *name):QWidget(parent)
     mpSelectorLayout->addWidget(mpQtToJS);
     mpSelectorLayout->addWidget(mpJSToQt);
 
-    populateMessages(mpQtToJS, "msg.config");
+    populateMessages("msg.config");
 
     mpSplitter->addWidget(mpSelectors);
 
@@ -58,7 +60,7 @@ AppWidget::~AppWidget()
     DELETEPTR(mpLayout);
 }
 
-void AppWidget::populateMessages(MessageSelector *pSelector, const QString& filename)
+void AppWidget::populateMessages(const QString& filename)
 {
     if(NULL == mpSettings)
     {
@@ -81,14 +83,39 @@ void AppWidget::populateMessages(MessageSelector *pSelector, const QString& file
     }
 }
 
+void AppWidget::setWidgetManager(WidgetManager *mgr)
+{
+    mpWidgetManager = mgr;
+    connect(mpWidgetManager, SIGNAL(logFromJS(QString)), this, SIGNAL(logMessage(QString)));
+}
+
+void AppWidget::refreshWidget()
+{
+    mpWebView->load(mpWidgetManager->indexUrl());
+    mpWidgetManager->setCurrentFrame(mpWebView->page()->mainFrame());
+}
+
+void AppWidget::evaluateJS(const QString &cmd)
+{
+    mpWidgetManager->evaluateJS(cmd);
+}
+
 void AppWidget::onMessageSentToJS(int msgID, const QString& label)
 {
-    QString key = QString("op%0Msg").arg(msgID);
-    mpSettings->beginGroup("QtToJSMessages");
+    if("Reload" == label)
+    {
+        refreshWidget();
+    }
+    else
+    {
+        QString key = QString("op%0Msg").arg(msgID);
+        mpSettings->beginGroup("QtToJSMessages");
 
-    // Send the message to the JS
+        // Send the message to the JS
+        evaluateJS(mpSettings->value(key).toString());
 
-    mpSettings->endGroup();
+        mpSettings->endGroup();
+    }
 
     // Log the message
     QString logMsg = QString(tr("%0 sent to the widget")).arg(label);
@@ -99,4 +126,13 @@ void AppWidget::onMessageSentToQt(int msgID, const QString& label)
 {
     // TODO: complete this class later...
     Q_UNUSED(msgID);
+    Q_UNUSED(label);
+}
+
+void AppWidget::onWidgetLoaded()
+{
+    refreshWidget();
+
+    QString qsLogMsg = QString(tr("Widget %0 loaded")).arg(mpWidgetManager->widgetName());
+    mpLogger->LogMessage(qsLogMsg, eMsgDirection_None);
 }

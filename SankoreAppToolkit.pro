@@ -16,7 +16,8 @@ SOURCES += main.cpp\
     DocumentTab.cpp \
     AppWidget.cpp \
     MessageSelector.cpp \
-    LogWidget.cpp
+    LogWidget.cpp \
+    WidgetManager.cpp
 
 HEADERS  += mainwindow.h \
     globalDefs.h \
@@ -24,4 +25,5 @@ HEADERS  += mainwindow.h \
     DocumentTab.h \
     AppWidget.h \
     MessageSelector.h \
-    LogWidget.h
+    LogWidget.h \
+    WidgetManager.h

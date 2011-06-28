@@ -5,6 +5,7 @@
 
 typedef enum
 {
+    eMsgDirection_None,
     eMsgDirection_QtToJS,
     eMsgDirection_JSToQt
 }eMsgDirection;
