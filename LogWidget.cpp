@@ -3,6 +3,7 @@
 #include <QTime>
 #include <QStringList>
 #include <QBrush>
+#include <QHeaderView>
 
 #include "LogWidget.h"
 #include "globalDefs.h"
@@ -14,6 +15,11 @@ LogWidget::LogWidget(QWidget *parent, const char *name):QTreeWidget(parent)
     setColumnCount(3);
     setColumnWidth(0, 150);
     setColumnWidth(1, 400);
+    QStringList qslHeader;
+    qslHeader << tr("Time");
+    qslHeader << tr("Message");
+    qslHeader << tr("Direction");
+    setHeaderLabels(qslHeader);
 }
 
 LogWidget::~LogWidget()

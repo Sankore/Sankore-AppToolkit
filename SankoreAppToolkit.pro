@@ -17,7 +17,8 @@ SOURCES += main.cpp\
     AppWidget.cpp \
     MessageSelector.cpp \
     LogWidget.cpp \
-    WidgetManager.cpp
+    WidgetManager.cpp \
+    UBWidgetUniboardAPI.cpp
 
 HEADERS  += mainwindow.h \
     globalDefs.h \
@@ -26,4 +27,5 @@ HEADERS  += mainwindow.h \
     AppWidget.h \
     MessageSelector.h \
     LogWidget.h \
-    WidgetManager.h
+    WidgetManager.h \
+    UBWidgetUniboardAPI.h

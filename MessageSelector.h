@@ -20,6 +20,9 @@ public:
 signals:
     void sendMessage(int msgID, const QString& label);
 
+public slots:
+    void onLoaded();
+
 private slots:
     void onSendMessage();
 

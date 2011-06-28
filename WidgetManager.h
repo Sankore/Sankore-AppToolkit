@@ -6,6 +6,8 @@
 #include <QUrl>
 #include <QWebFrame>
 
+#include "UBWidgetUniboardAPI.h"
+
 class WidgetManager : public QObject
 {
     Q_OBJECT
@@ -35,6 +37,7 @@ private:
     QUrl mIndex;
     QString mName;
     QWebFrame* mpFrame;
+    UBWidgetUniboardAPI* mpApi;
 };
 
 #endif // WIDGETMANAGER_H

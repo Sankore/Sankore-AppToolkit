@@ -8,6 +8,7 @@
 #include <QVBoxLayout>
 #include <QFile>
 #include <QSettings>
+#include <QWebSettings>
 
 #include "MessageSelector.h"
 #include "LogWidget.h"
@@ -23,6 +24,7 @@ public:
 
 signals:
     void logMessage(const QString& msg);
+    void widgetLoaded();
 
 public slots:
     void onWidgetLoaded();
@@ -30,11 +32,13 @@ public slots:
 private slots:
     void onMessageSentToJS(int msgID, const QString& label);
     void onMessageSentToQt(int msgID, const QString& label);
+    void onMessageReceivedFromJS(const QString& msg);
 
 private:
     void populateMessages(const QString& filename);
     void refreshWidget();
     void evaluateJS(const QString& cmd);
+    void setWebSettings();
 
     QSplitter* mpSplitter;
     QWebView* mpWebView;
@@ -46,6 +50,7 @@ private:
     LogWidget* mpLogger;
     QSettings* mpSettings;
     WidgetManager* mpWidgetManager;
+    QWebSettings* mpWebSettings;
 };
 
 #endif // APPWIDGET_H

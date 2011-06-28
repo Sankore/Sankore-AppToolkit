@@ -28,6 +28,9 @@ void WidgetManager::setCurrentFrame(QWebFrame *frame)
     mpFrame = frame;
     attachObject();
     connect(mpFrame, SIGNAL(javaScriptWindowObjectCleared()), this, SLOT(attachObject()));
+
+    mpApi = new UBWidgetUniboardAPI(this);
+    connect(mpApi, SIGNAL(functionCalled(QString)), this, SIGNAL(logFromJS(QString)));
 }
 
 QString WidgetManager::path()
@@ -48,11 +51,12 @@ QString WidgetManager::widgetName()
 void WidgetManager::attachObject()
 {
     mpFrame->addToJavaScriptWindowObject(QString("W3CInteractiveWidgetApi"), this);
+    //mpFrame->addToJavaScriptWindowObject("SankoreAPI", mpApi);
 }
 
 void WidgetManager::returnStatus(QString command, QString status)
 {
-    QString logString = QTime::currentTime().toString("hh:mm:ss.zzz") + "  :   command: " + command + "   status:  " + status;
+    QString logString = command + "   status:  " + status;
     emit (logFromJS(logString));
 }
 

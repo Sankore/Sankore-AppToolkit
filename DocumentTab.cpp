@@ -23,4 +23,5 @@ void DocumentTab::addPage(const QString &name, QTextEdit *textEditor)
 void DocumentTab::removePage(const QString &name)
 {
     // TODO : Implement this
+    Q_UNUSED(name);
 }

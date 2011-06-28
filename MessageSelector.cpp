@@ -29,6 +29,8 @@ MessageSelector::MessageSelector(const QString &label, QWidget *parent, const ch
     mpButtonLayout->addWidget(mpButton, 0);
     mpButtonLayout->addStretch(1);
 
+    mpButton->setEnabled(false);
+    mpCombo->setEnabled(false);
     connect(mpButton, SIGNAL(clicked()), this, SLOT(onSendMessage()));
 }
 
@@ -52,4 +54,10 @@ void MessageSelector::populateMessages(QStringList msgList)
 void MessageSelector::onSendMessage()
 {
     emit sendMessage(mpCombo->currentIndex(), mpCombo->currentText());
+}
+
+void MessageSelector::onLoaded()
+{
+    mpButton->setEnabled(true);
+    mpCombo->setEnabled(true);
 }
