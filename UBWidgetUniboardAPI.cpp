@@ -141,3 +141,26 @@ void UBWidgetUniboardAPI::addText(const QString& text, const qreal x, const qrea
     emit functionCalled(msg);
 }
 
+void UBWidgetUniboardAPI::returnStatus(const QString& method, const QString& status)
+{
+    QString msg = QString(tr("%0 called (method=%1, status=%2)")).arg("returnStatus").arg(method).arg(status);
+    emit functionCalled(msg);
+}
+
+void UBWidgetUniboardAPI::usedMethods(QStringList methods)
+{
+    QString meth = "";
+    foreach(QString method, methods)
+    {
+        meth += QString("%0 ").arg(method);
+    }
+
+    QString msg = QString(tr("%0 called (methods=%1)")).arg("usedMethods").arg(meth);
+    emit functionCalled(msg);
+}
+
+void UBWidgetUniboardAPI::response(bool correct)
+{
+    QString msg = QString(tr("%0 called (correct=%1)")).arg("response").arg(correct);
+    emit functionCalled(msg);
+}

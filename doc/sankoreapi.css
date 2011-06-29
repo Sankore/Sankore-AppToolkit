@@ -1,0 +1,49 @@
+body
+{
+	font-family:Verdana;
+}
+
+h2
+{
+	background:#a82f00;
+	color:#FFFFFF;
+	padding-left:10px;
+	padding-bottom:3px;
+	margin-left:0px;
+	margin-right:0px;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
+h3
+{
+	color:#a82f00;
+	padding-left:10px;
+	margin:0px;
+}
+
+h4
+{
+	margin-top:5px;
+	margin-left:20px;
+	margin-bottom:5px;
+}
+
+.description
+{
+	margin-left:30px;
+	margin-top:0px;
+	margin-bottom:5px;
+}
+
+.method
+{
+	background:#EEEEEE;
+}
+
+.parameter
+{
+	padding-left:30px;
+	padding-top:0px;
+	padding-bottom:0px;
+}

@@ -29,13 +29,18 @@ public slots:
     void setBackground(bool pIsDark, bool pIsCrossed);
     void addObject(QString pUrl, int width = 0, int height = 0, int x = 0, int y = 0, bool background = false);
     void resize(qreal width, qreal height);
-    QString locale();
     void setPreference(const QString& key, QString value);
     QString preference(const QString& key, const QString& pDefault = QString());
     QStringList preferenceKeys();
     void showMessage(const QString& message);
     void centerOn(const qreal x, const qreal y);
     void addText(const QString& text, const qreal x, const qreal y, const int height = -1, const QString& font = "", bool bold = false, bool italic = false);
+
+    // Documented API methods
+    void returnStatus(const QString& method, const QString& status);
+    void usedMethods(QStringList methods);
+    void response(bool correct);
+    QString locale();
 };
 
 #endif // UBWIDGETUNIBOARDAPI_H

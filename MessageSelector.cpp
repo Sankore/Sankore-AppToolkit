@@ -15,7 +15,7 @@ MessageSelector::MessageSelector(const QString &label, QWidget *parent, const ch
     mpCBLayout = new QHBoxLayout();
     mpLayout->addLayout(mpCBLayout);
 
-    mpCBLayout->addStretch(1);
+    //mpCBLayout->addStretch(1);
     mpCombo = new QComboBox(this);
     mpCBLayout->addWidget(mpCombo);
     mpCBLayout->addStretch(1);
@@ -24,7 +24,7 @@ MessageSelector::MessageSelector(const QString &label, QWidget *parent, const ch
 
     mpLayout->addLayout(mpButtonLayout);
 
-    mpButtonLayout->addStretch(1);
+    //mpButtonLayout->addStretch(1);
     mpButton = new QPushButton(tr("Send"), this);
     mpButtonLayout->addWidget(mpButton, 0);
     mpButtonLayout->addStretch(1);

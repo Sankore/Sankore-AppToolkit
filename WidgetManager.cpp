@@ -25,12 +25,13 @@ void WidgetManager::setWidget(const QString& path)
 
 void WidgetManager::setCurrentFrame(QWebFrame *frame)
 {
-    mpFrame = frame;
-    attachObject();
-    connect(mpFrame, SIGNAL(javaScriptWindowObjectCleared()), this, SLOT(attachObject()));
-
     mpApi = new UBWidgetUniboardAPI(this);
     connect(mpApi, SIGNAL(functionCalled(QString)), this, SIGNAL(logFromJS(QString)));
+    mpFrame = frame;
+    connect(mpFrame, SIGNAL(javaScriptWindowObjectCleared()), this, SLOT(attachObject()));
+
+    attachObject();
+
 }
 
 QString WidgetManager::path()
@@ -51,7 +52,7 @@ QString WidgetManager::widgetName()
 void WidgetManager::attachObject()
 {
     mpFrame->addToJavaScriptWindowObject(QString("W3CInteractiveWidgetApi"), this);
-    //mpFrame->addToJavaScriptWindowObject("SankoreAPI", mpApi);
+    mpFrame->addToJavaScriptWindowObject("SankoreAPI", mpApi);
 }
 
 void WidgetManager::returnStatus(QString command, QString status)

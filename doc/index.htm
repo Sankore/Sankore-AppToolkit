@@ -1,0 +1,76 @@
+<html>
+	<head>
+		<title>Sankore API Documentation</title>
+		<link rel="stylesheet" type="text/css" href="sankoreapi.css" />
+	</head>
+	<body>
+		<h1>Sankore API Documentation</h1>
+		This documentation describes the Sankore API.
+		<h2>Sankore to Widget</h2>
+		<div class="method">
+			<h3>Start Edit</h3>
+			<h4>Description</h4>
+			<pre class="description">Put the widget in edit mode.</pre>
+		</div>
+		<div class="method">
+			<h3>Stop Edit</h3>
+			<h4>Description</h4>
+			<pre class="description">Put the widget in display mode.</pre>
+		</div>
+		<div class="method">
+			<h3>Shuffle</h3>
+			<h4>Description</h4>
+			<pre class="description">Put the widget in a known state (initial state).</pre>
+		</div>
+		<div class="method">
+			<h3>Check Response</h3>
+			<h4>Description</h4>
+			<pre class="description">Ask the widget for its response.</pre>
+		</div>
+		<div class="method">
+			<h3>Reload</h3>
+			<h4>Description</h4>
+			<pre class="description">Reload the widget.</pre>
+		</div>
+		<div class="method">
+			<h3>Save</h3>
+			<h4>Description</h4>
+			<pre class="description">Save the widget state.</pre>
+		</div>
+		<div class="method">
+			<h3>List Methods</h3>
+			<h4>Description</h4>
+			<pre class="description">Ask the widget which method of the Sankore API are used. This method is used to generate the widget buttons.</pre>
+		</div>
+		<h2>Widget to Sankore</h2>
+		<div class="method">
+			<h3>returnStatus</h3>
+			<h4>Parameters</h4>
+			<pre class="parameter">[QString] <b>method</b>: the called method.</pre>
+			<pre class="parameter">[QString] <b>status</b>: the actual status.</pre>
+			<h4>Description</h4>
+			<pre class="description">Return the status of the widget. This method is used for debug purpose only.</pre>
+		</div>
+		<div class="method">
+			<h3>usedMethods</h3>
+			<h4>Parameters</h4>
+			<pre class="parameter">[QStringList] <b>methods</b>: the used API methods list.</pre>
+			<h4>Description</h4>
+			<pre class="description">Return the used API methods of the widget.</pre>
+		</div>
+		<div class="method">
+			<h3>response</h3>
+			<h4>Parameters</h4>
+			<pre class="parameter">[bool] <b>correct</b>: the response state.</pre>
+			<h4>Description</h4>
+			<pre class="description">Return an indication of the rightness of the widget's response.</pre>
+		</div>
+		<div class="method">
+			<h3>locale</h3>
+			<h4>Return value</h4>
+			<pre class="parameter">[QString] the actual language used by the Sankore application.</pre>
+			<h4>Description</h4>
+			<pre class="description">Return the actual language identifier used by the Sankore application.</pre>
+		</div>
+	</body>
+</html>
