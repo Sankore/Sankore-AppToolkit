@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui webkit
+QT       += core gui webkit xml
 
 TARGET = SankoreAppToolkit
 TEMPLATE = app
@@ -18,7 +18,8 @@ SOURCES += main.cpp\
     MessageSelector.cpp \
     LogWidget.cpp \
     WidgetManager.cpp \
-    UBWidgetUniboardAPI.cpp
+    UBWidgetUniboardAPI.cpp \
+    HelpViewer.cpp
 
 HEADERS  += mainwindow.h \
     globalDefs.h \
@@ -28,4 +29,5 @@ HEADERS  += mainwindow.h \
     MessageSelector.h \
     LogWidget.h \
     WidgetManager.h \
-    UBWidgetUniboardAPI.h
+    UBWidgetUniboardAPI.h \
+    HelpViewer.h
