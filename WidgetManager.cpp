@@ -51,8 +51,7 @@ QString WidgetManager::widgetName()
 
 void WidgetManager::attachObject()
 {
-    mpFrame->addToJavaScriptWindowObject(QString("W3CInteractiveWidgetApi"), this);
-    mpFrame->addToJavaScriptWindowObject("SankoreAPI", mpApi);
+    mpFrame->addToJavaScriptWindowObject("sankore", mpApi);
 }
 
 void WidgetManager::returnStatus(QString command, QString status)

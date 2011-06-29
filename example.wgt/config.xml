@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<widget xmlns="http://www.w3.org/ns/widgets" 
+		xmlns:ub="http://uniboard.mnemis.com/widgets"
+        id="http://www.example.net/widgets/helloworld" 
+        version="1.0"
+        width="230"
+        height="210" 
+		ub:resizable="false">
+		
+		<name>What's on the image?</name>
+		<author href="http://www.example.net"
+	            email="info@example.com">Your name</author>
+		<description>Make a right word.</description>
+		<preference name="skin"
+		            value="uniboard"/>
+		<content src="index.html"/> 
+</widget>

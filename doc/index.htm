@@ -5,40 +5,59 @@
 	</head>
 	<body>
 		<h1>Sankore API Documentation</h1>
-		This documentation describes the Sankore API.
+<pre>
+This documentation describes the Sankore API. This API is useable in the widgets through the 'sankore' object.
+For more information, have a look at the example widget <b>example.wgt</b>.
+
+Here is an example of the way the method <b>returnStatus</b> is called from the widget:
+</pre>
+		
+<pre class="code">
+function startEditing()
+{
+	sankore.returnStatus("startEditing()", "Ok!");
+}
+</pre>
+		
+<pre>
+This code sample is the declaration of the method <b>Start Edit</b> that can be called from Sankore. This
+method must be declared in the widget and implemented to do the proper action. In this example, this method
+will display the debug message "startEditing():Ok!" in Sankore.
+</pre>
+		
 		<h2>Sankore to Widget</h2>
 		<div class="method">
-			<h3>Start Edit</h3>
+			<h3>startEditing</h3>
 			<h4>Description</h4>
 			<pre class="description">Put the widget in edit mode.</pre>
 		</div>
 		<div class="method">
-			<h3>Stop Edit</h3>
+			<h3>stopEditing</h3>
 			<h4>Description</h4>
 			<pre class="description">Put the widget in display mode.</pre>
 		</div>
 		<div class="method">
-			<h3>Shuffle</h3>
+			<h3>initialize</h3>
 			<h4>Description</h4>
 			<pre class="description">Put the widget in a known state (initial state).</pre>
 		</div>
 		<div class="method">
-			<h3>Check Response</h3>
+			<h3>checkResponse</h3>
 			<h4>Description</h4>
 			<pre class="description">Ask the widget for its response.</pre>
 		</div>
 		<div class="method">
-			<h3>Reload</h3>
+			<h3>reload</h3>
 			<h4>Description</h4>
 			<pre class="description">Reload the widget.</pre>
 		</div>
 		<div class="method">
-			<h3>Save</h3>
+			<h3>save</h3>
 			<h4>Description</h4>
 			<pre class="description">Save the widget state.</pre>
 		</div>
 		<div class="method">
-			<h3>List Methods</h3>
+			<h3>listMethods</h3>
 			<h4>Description</h4>
 			<pre class="description">Ask the widget which method of the Sankore API are used. This method is used to generate the widget buttons.</pre>
 		</div>
