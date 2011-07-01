@@ -91,5 +91,164 @@ will display the debug message "startEditing():Ok!" in Sankore.
 			<h4>Description</h4>
 			<pre class="description">Return the actual language identifier used by the Sankore application.</pre>
 		</div>
+		<div class="method">
+			<h3>setTool</h3>
+			<h4>Parameters</h4>
+			<pre class="parameter">[QString] <b>toolString</b>: the tool name.</pre>
+			<h4>Description</h4>
+			<pre class="description">Set the given tool as the selected one. The available tools are "pen", "marker", "arrow" and "line".</pre>
+		</div>
+		<div class="method">
+			<h3>setPenColor</h3>
+			<h4>Parameters</h4>
+			<pre class="parameter">[QString] <b>penColor</b>: the new color.</pre>
+			<h4>Description</h4>
+			<pre class="description">Set the current pen color as the given one.</pre>
+		</div>
+		<div class="method">
+			<h3>setMarkerColor</h3>
+			<h4>Parameters</h4>
+			<pre class="parameter">[QString] <b>markerColor</b>: the new color.</pre>
+			<h4>Description</h4>
+			<pre class="description">Set the current marker color as the given one.</pre>
+		</div>
+		<div class="method">
+			<h3>pageThumbnail</h3>
+			<h4>Return value</h4>
+			<pre class="parameter">[QString] The URL of the given page thumbnail.</pre>
+			<h4>Parameters</h4>
+			<pre class="parameter">[int] <b>pageNumber</b>: the given page number.</pre>
+			<h4>Description</h4>
+			<pre class="description">Return the URL of the given page number thumbnail.</pre>
+		</div>
+		<div class="method">
+			<h3>zoom</h3>
+			<h4>Parameters</h4>
+			<pre class="parameter">[qreal] <b>factor</b>: the zoom factor.</pre>
+			<pre class="parameter">[qreal] <b>x</b>: the x coordinate of the zoom.</pre>
+			<pre class="parameter">[qreal] <b>y</b>: the y coordinate of the zoom.</pre>
+			<h4>Description</h4>
+			<pre class="description">Zoom the scene at the given point with the given zoom factor.</pre>
+		</div>
+		<div class="method">
+			<h3>move</h3>
+			<h4>Parameters</h4>
+			<pre class="parameter">[qreal] <b>x</b>: the x coordinate where to move the scene.</pre>
+			<pre class="parameter">[qreal] <b>y</b>: the y coordinate where to move the scene.</pre>
+			<h4>Description</h4>
+			<pre class="description">Performs a hand scroll move to the given position.</pre>
+		</div>
+		<div class="method">
+			<h3>moveTo</h3>
+			<h4>Parameters</h4>
+			<pre class="parameter">[qreal] <b>x</b>: the x coordinate where to move the scene.</pre>
+			<pre class="parameter">[qreal] <b>y</b>: the y coordinate where to move the scene.</pre>
+			<h4>Description</h4>
+			<pre class="description">Move the scene to the given position.</pre>
+		</div>
+		<div class="method">
+			<h3>drawLineTo</h3>
+			<h4>Parameters</h4>
+			<pre class="parameter">[qreal] <b>x</b>: the x coordinate.</pre>
+			<pre class="parameter">[qreal] <b>y</b>: the y coordinate.</pre>
+			<pre class="parameter">[qreal] <b>pWidth</b>: the line width.</pre>
+			<h4>Description</h4>
+			<pre class="description">Draw a line to the given coordinate with the given width.</pre>
+		</div>
+		<div class="method">
+			<h3>eraseLineTo</h3>
+			<h4>Parameters</h4>
+			<pre class="parameter">[qreal] <b>x</b>: the x coordinate.</pre>
+			<pre class="parameter">[qreal] <b>y</b>: the y coordinate.</pre>
+			<pre class="parameter">[qreal] <b>pWidth</b>: the line width.</pre>
+			<h4>Description</h4>
+			<pre class="description">Erase a line to the given position with the given width.</pre>
+		</div>
+		<div class="method">
+			<h3>clear</h3>
+			<h4>Description</h4>
+			<pre class="description">Clear the scene.</pre>
+		</div>
+		<div class="method">
+			<h3>setBackground</h3>
+			<h4>Parameters</h4>
+			<pre class="parameter">[bool] <b>pIsDark</b>: the dark background flag.</pre>
+			<pre class="parameter">[bool] <b>pIsCrossed</b>: the grid background flag.</pre>
+			<h4>Description</h4>
+			<pre class="description">Set the background related to the given parameters.</pre>
+		</div>
+		<div class="method">
+			<h3>addObject</h3>
+			<h4>Parameters</h4>
+			<pre class="parameter">[QString] <b>pUrl</b>: the object URL.</pre>
+			<pre class="parameter">[int] <b>width</b>: the width.</pre>
+			<pre class="parameter">[int] <b>height</b>: the height.</pre>
+			<pre class="parameter">[int] <b>x</b>: the x coordinate.</pre>
+			<pre class="parameter">[int] <b>y</b>: the y coordinate.</pre>
+			<pre class="parameter">[bool] <b>background</b>: if this flag is true, the object is set as background.</pre>
+			<h4>Description</h4>
+			<pre class="description">Add the given object to the scene.</pre>
+		</div>
+		<div class="method">
+			<h3>resize</h3>
+			<h4>Parameters</h4>
+			<pre class="parameter">[qreal] <b>width</b>: the new width.</pre>
+			<pre class="parameter">[qreal] <b>height</b>: the new height.</pre>
+			<h4>Description</h4>
+			<pre class="description">Resize the widget to the given size.</pre>
+		</div>
+		<div class="method">
+			<h3>setPreference</h3>
+			<h4>Parameters</h4>
+			<pre class="parameter">[QString] <b>key</b>: the preference key.</pre>
+			<pre class="parameter">[QString] <b>value</b>: the preference value.</pre>
+			<h4>Description</h4>
+			<pre class="description">Set preference <b>key</b> to the value defined by <b>value</b>.</pre>
+		</div>
+		<div class="method">
+			<h3>preference</h3>
+			<h4>Return value</h4>
+			<pre class="parameter">[QString] the preference value.</pre>
+			<h4>Parameters</h4>
+			<pre class="parameter">[QString] <b>key</b>: the preference key.</pre>
+			<pre class="parameter">[QString] <b>pDefault</b>: the default value.</pre>
+			<h4>Description</h4>
+			<pre class="description">Return the value of the preference defined by <b>key</b>.</pre>
+		</div>
+		<div class="method">
+			<h3>preferenceKeys</h3>
+			<h4>Return value</h4>
+			<pre class="parameter">[QStringList] the preference keys list value.</pre>
+			<h4>Description</h4>
+			<pre class="description">Return the list of the preference keys.</pre>
+		</div>
+		<div class="method">
+			<h3>showMessage</h3>
+			<h4>Parameters</h4>
+			<pre class="parameter">[QString] <b>message</b>: the message to show.</pre>
+			<h4>Description</h4>
+			<pre class="description">Return the actual language identifier used by the Sankore application.</pre>
+		</div>		
+		<div class="method">
+			<h3>centerOn</h3>
+			<h4>Parameters</h4>
+			<pre class="parameter">[qreal] <b>x</b>: the x coordinate.</pre>
+			<pre class="parameter">[qreal] <b>y</b>: the y coordinate.</pre>
+			<h4>Description</h4>
+			<pre class="description">Center the scene on the given point.</pre>
+		</div>
+		<div class="method">
+			<h3>addText</h3>
+			<h4>Parameters</h4>
+			<pre class="parameter">[QString] <b>text</b>: the given text.</pre>
+			<pre class="parameter">[qreal] <b>x</b>: the x coordinate.</pre>
+			<pre class="parameter">[qreal] <b>y</b>: the y coordinate.</pre>
+			<pre class="parameter">[int] <b>height</b>: the font height.</pre>
+			<pre class="parameter">[QString] <b>font</b>: the font family.</pre>
+			<pre class="parameter">[bool] <b>bold</b>: the bold flag.</pre>
+			<pre class="parameter">[bool] <b>italic</b>: the italic flag.</pre>
+			<h4>Description</h4>
+			<pre class="description">Add the given text on the board, at the given position with the given parameters.</pre>
+		</div>
 	</body>
 </html>
