@@ -93,4 +93,8 @@ macx {
     system(printf \""$$OSX_VERSION"\" > $$BUILD_DIR/osx_version)
     system(printf "%02x%02x%02x%02x" `printf $$VERSION_RC | cut -d ',' -f 1` `printf $$VERSION_RC | cut -d ',' -f 2` `printf $$VERSION_RC | cut -d ',' -f 3` `printf $$VERSION_RC | cut -d ',' -f 4` | xxd -r -p > "$$VERSION_RC_PATH")
 
+    ICON = resources/macx/Uniboard.icns
 }
+
+RESOURCES += \
+    res.qrc

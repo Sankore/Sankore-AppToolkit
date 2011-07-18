@@ -102,7 +102,7 @@ $DMGUTIL --open --volume="$NAME" "$DMG"
 cp -R "$APP" "$VOLUME"
 ln -s /Applications "$VOLUME"
 
-$DMGUTIL --set --iconsize=96 --toolbar=false --icon=resources/macx/UniboardDmg.icns "$VOLUME"
+$DMGUTIL --set --iconsize=96 --toolbar=false --icon=resources/macx/SankoreAppToolkitDmg.icns "$VOLUME"
 $DMGUTIL --set --x=20 --y=60 --width=580 --height=312 "$VOLUME"
 $DMGUTIL --set --x=180 --y=160 "$VOLUME/`basename \"$APP\"`"
 $DMGUTIL --set --x=400 --y=160 "$VOLUME/Applications"

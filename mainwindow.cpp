@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
     , mpHelpViewer(NULL)
 {
     setWindowTitle(tr("Sankore Application Toolkit"));
+    setWindowIcon(QIcon(":resources/uniboard.png"));
     resize(800, 600);
     mpSplitter = new QSplitter(this);
     setCentralWidget(mpSplitter);
