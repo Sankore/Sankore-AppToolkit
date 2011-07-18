@@ -86,7 +86,16 @@ macx {
     FRAMEWORK_DIR = "$$CONTENTS_DIR/Frameworks"
 
     # Build the package content here
+    MSG_FILE.files = "msg.config"
+    MSG_FILE.path = "$$RESOURCES_DIR"
+    DOC.files = "doc"
+    DOC.path = "$$RESOURCES_DIR"
+    EXAMPLE_WIDGET.files = "example.wgt"
+    EXAMPLE_WIDGET.path = "$$RESOURCES_DIR"
 
+    QMAKE_BUNDLE_DATA += MSG_FILE
+    QMAKE_BUNDLE_DATA += DOC
+    QMAKE_BUNDLE_DATA += EXAMPLE_WIDGET
 
     # Generate some files related to versions
     system(mkdir -p $$BUILD_DIR)

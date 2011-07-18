@@ -1,6 +1,7 @@
 #include <QDebug>
 #include <QUrl>
 #include <QWebPage>
+#include <QApplication>
 
 #include "AppWidget.h"
 #include "globalDefs.h"
@@ -38,7 +39,17 @@ AppWidget::AppWidget(QWidget *parent, const char *name):QWidget(parent)
     mpSelectorLayout->addWidget(mpQtToJS);
     //mpSelectorLayout->addWidget(mpJSToQt);
 
-    populateMessages("msg.config");
+    QString qsMsgFiles;
+    QString qsMsgFilename = "msg.config";
+
+#ifdef Q_WS_MAC
+    qsMsgFiles = QString("%0/../Resources/%1").arg(QApplication::applicationDirPath()).arg(qsMsgFilename);
+#else
+    qsMsgFiles = qsMsgFilename;
+#endif
+
+    qDebug() << qsMsgFiles;
+    populateMessages(qsMsgFiles);
 
     mpSplitter->addWidget(mpSelectors);
 

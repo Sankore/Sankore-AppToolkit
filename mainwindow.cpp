@@ -96,7 +96,15 @@ void MainWindow::onFileClose()
 
 void MainWindow::onFileOpen()
 {
-    QString widgetPath = QFileDialog::getExistingDirectory( this, tr("Open widget"), "", QFileDialog::ShowDirsOnly);
+    QString qsDefaultPath;
+
+#ifdef Q_WS_MAC
+    qsDefaultPath = QString("%0/../Resources/").arg(QApplication::applicationDirPath());
+#else
+    qsDefaultPath = QApplication::applicationDirPath();
+#endif
+
+    QString widgetPath = QFileDialog::getExistingDirectory( this, tr("Open widget"), qsDefaultPath, QFileDialog::ShowDirsOnly);
     mpWidgetManager->setWidget(widgetPath);
 
     emit widgetLoaded();
