@@ -105,5 +105,37 @@ macx {
     ICON = resources/macx/Uniboard.icns
 }
 
+linux-g++ {
+    QMAKE_CFLAGS += -fopenmp
+    QMAKE_CXXFLAGS += -fopenmp
+    QMAKE_LFLAGS += -fopenmp
+
+    MSG_FILE.files = "msg.config"
+    MSG_FILE.path = $$DESTDIR
+    DOC.files = "doc"
+    DOC.path = $$DESTDIR
+    EXAMPLE_WIDGET.files = "example.wgt"
+    EXAMPLE_WIDGET.path = $$DESTDIR
+
+    system(mkdir -p $$BUILD_DIR)
+    system(echo "$$VERSION" > $$BUILD_DIR/version)
+}
+
+linux-g++-64 {
+    QMAKE_CFLAGS += -fopenmp
+    QMAKE_CXXFLAGS += -fopenmp
+    QMAKE_LFLAGS += -fopenmp
+
+    MSG_FILE.files = "msg.config"
+    MSG_FILE.path = $$DESTDIR
+    DOC.files = "doc"
+    DOC.path = $$DESTDIR
+    EXAMPLE_WIDGET.files = "example.wgt"
+    EXAMPLE_WIDGET.path = $$DESTDIR
+
+    system(mkdir -p $$BUILD_DIR)
+    system(echo "$$VERSION" > $$BUILD_DIR/version)
+}
+
 RESOURCES += \
     res.qrc
