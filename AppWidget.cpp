@@ -48,7 +48,6 @@ AppWidget::AppWidget(QWidget *parent, const char *name):QWidget(parent)
     qsMsgFiles = qsMsgFilename;
 #endif
 
-    qDebug() << qsMsgFiles;
     populateMessages(qsMsgFiles);
 
     mpSplitter->addWidget(mpSelectors);

@@ -12,8 +12,8 @@
 #include "WidgetManager.h"
 #include "HelpViewer.h"
 
-//#define ADD_TREE    1
-//#define ADD_EDITOR  1
+#define ADD_TREE    1
+#define ADD_EDITOR  1
 #define ADD_VIEWER  1
 #define ADD_HELP    1
 class MainWindow : public QMainWindow
