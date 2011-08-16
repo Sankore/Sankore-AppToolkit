@@ -66,6 +66,24 @@ RCC_DIR = $$BUILD_DIR/rcc
 UI_DIR = $$BUILD_DIR/ui
 
 #Configuration
+
+win32 {
+#   RC_FILE = resources/win/sankore.rc
+   CONFIG += qaxcontainer
+   exists(console):CONFIG += console
+   QMAKE_CXXFLAGS += /MP
+   QMAKE_CXXFLAGS_RELEASE += /Od \
+       /Zi
+   QMAKE_LFLAGS_RELEASE += /DEBUG
+   
+   UB_LIBRARY.path = $$DESTDIR
+   UB_I18N.path = $$DESTDIR/i18n
+   UB_ETC.path = $$DESTDIR
+   UB_THIRDPARTY_INTERACTIVE.path = $$DESTDIR/library
+   
+   system(md $$replace(BUILD_DIR, /, \\))
+}
+
 macx {
     CONFIG(release, debug|release):CONFIG += x86
     CONFIG(debug, debug|release):CONFIG += x86
