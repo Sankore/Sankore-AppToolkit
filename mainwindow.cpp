@@ -32,6 +32,7 @@ MainWindow::MainWindow(QWidget *parent)
     mpTabs = new DocumentTab(this);
     mpSplitter->addWidget(mpTabs);
 #endif
+
 #ifdef ADD_VIEWER
     mpAppWidget = new AppWidget(this);
     mpAppWidget->setWidgetManager(mpWidgetManager);
@@ -44,6 +45,10 @@ MainWindow::MainWindow(QWidget *parent)
     mpHelpViewer->hide();
 #endif
     createMenuBar();
+
+#if defined ADD_TREE && defined ADD_EDITOR
+    connect(mpTree, SIGNAL(fileDoubleClicked(QString)), mpTabs, SLOT(onFileDoubleClicked(QString)));
+#endif
 }
 
 MainWindow::~MainWindow()

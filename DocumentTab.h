@@ -5,6 +5,14 @@
 #include <QMap>
 #include <QTextEdit>
 
+#include "DocumentWidget.h"
+
+typedef enum
+{
+    eDocType_Text,
+    eDocType_Any
+}eDocType;
+
 class DocumentTab : public QTabWidget
 {
     Q_OBJECT
@@ -13,11 +21,16 @@ public:
     DocumentTab(QWidget* parent=0, const char* name="DocumentTab");
     ~DocumentTab();
 
-    void addPage(const QString& name, QTextEdit* textEditor);
+    void addPage(const QString& path);
     void removePage(const QString& name);
 
+public slots:
+    void onFileDoubleClicked(const QString& path);
+
 private:
-    QMap<QString, QTextEdit*> mpPages;
+    eDocType getDocType(const QString& docName);
+
+    QMap<QString, DocumentWidget*> mWidgets;
 };
 
 #endif // DOCUMENTTAB_H

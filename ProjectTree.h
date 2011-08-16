@@ -13,6 +13,12 @@ public:
     ~ProjectTree();
     void setProjectPath(const QString& path);
 
+signals:
+    void fileDoubleClicked(const QString& path);
+
+private slots:
+    void onItemDoubleClicked(QTreeWidgetItem* item, int column);
+
 private:
     void getContent(QDir* pParentDir, QTreeWidgetItem* pParentItem);
 

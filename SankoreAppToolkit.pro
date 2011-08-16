@@ -36,7 +36,10 @@ SOURCES += main.cpp\
     LogWidget.cpp \
     WidgetManager.cpp \
     UBWidgetUniboardAPI.cpp \
-    HelpViewer.cpp
+    HelpViewer.cpp \
+    TextDocument.cpp \
+    DocumentWidget.cpp \
+    WebDocument.cpp
 
 HEADERS  += mainwindow.h \
     globalDefs.h \
@@ -47,7 +50,10 @@ HEADERS  += mainwindow.h \
     LogWidget.h \
     WidgetManager.h \
     UBWidgetUniboardAPI.h \
-    HelpViewer.h
+    HelpViewer.h \
+    TextDocument.h \
+    DocumentWidget.h \
+    WebDocument.h
 
 #Build directory
 BUILD_DIR = build
