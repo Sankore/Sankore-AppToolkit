@@ -54,8 +54,8 @@ MainWindow::~MainWindow()
     DELETEPTR(mpMenuBar);
     DELETEPTR(mpAppWidget);
     DELETEPTR(mpTabs);
-    DELETEPTR(mpSplitter);
     DELETEPTR(mpTree);
+    DELETEPTR(mpSplitter);
     DELETEPTR(mpWidgetManager);
 }
 
@@ -105,6 +105,9 @@ void MainWindow::onFileOpen()
 #endif
 
     QString widgetPath = QFileDialog::getExistingDirectory( this, tr("Open widget"), qsDefaultPath, QFileDialog::ShowDirsOnly);
+#ifdef ADD_TREE
+    mpTree->setProjectPath(widgetPath);
+#endif
     mpWidgetManager->setWidget(widgetPath);
 
     emit widgetLoaded();
