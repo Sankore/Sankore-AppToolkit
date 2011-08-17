@@ -27,10 +27,12 @@ MainWindow::MainWindow(QWidget *parent)
 #ifdef ADD_TREE
     mpTree = new ProjectTree(this);
     mpSplitter->addWidget(mpTree);
+    mpSplitter->setStretchFactor(mpSplitter->count()-1, 0);
 #endif
 #ifdef ADD_EDITOR
     mpTabs = new DocumentTab(this);
     mpSplitter->addWidget(mpTabs);
+    mpSplitter->setStretchFactor(mpSplitter->count()-1, 1);
 #endif
 
 #ifdef ADD_VIEWER
@@ -38,11 +40,13 @@ MainWindow::MainWindow(QWidget *parent)
     mpAppWidget->setWidgetManager(mpWidgetManager);
     mpSplitter->addWidget(mpAppWidget);
     connect(this, SIGNAL(widgetLoaded()), mpAppWidget, SLOT(onWidgetLoaded()));
+    mpSplitter->setStretchFactor(mpSplitter->count()-1, 0);
 #endif
 #ifdef ADD_HELP
     mpHelpViewer = new HelpViewer(this);
     mpSplitter->addWidget(mpHelpViewer);
     mpHelpViewer->hide();
+    mpSplitter->setStretchFactor(mpSplitter->count()-1, 0);
 #endif
     createMenuBar();
 
@@ -74,6 +78,14 @@ void MainWindow::createMenuBar()
 
     QAction* pAction = mpMenuFile->addAction(tr("Open"));
     connect(pAction, SIGNAL(triggered()), this, SLOT(onFileOpen()));
+
+#ifdef ADD_EDITOR
+    mpMenuFile->addSeparator();
+    pAction = mpMenuFile->addAction(tr("Save"));
+    pAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_S));
+    connect(pAction, SIGNAL(triggered()), this, SLOT(onFileSave()));
+    mpMenuFile->addSeparator();
+#endif
 
     pAction = mpMenuFile->addAction(tr("Close"));
     connect(pAction, SIGNAL(triggered()), this, SLOT(onFileClose()));
@@ -110,12 +122,20 @@ void MainWindow::onFileOpen()
 #endif
 
     QString widgetPath = QFileDialog::getExistingDirectory( this, tr("Open widget"), qsDefaultPath, QFileDialog::ShowDirsOnly);
-#ifdef ADD_TREE
-    mpTree->setProjectPath(widgetPath);
-#endif
-    mpWidgetManager->setWidget(widgetPath);
 
-    emit widgetLoaded();
+    if("" != widgetPath)
+    {
+#ifdef ADD_EDITOR
+        mpTabs->clear();
+#endif
+
+#ifdef ADD_TREE
+        mpTree->setProjectPath(widgetPath);
+#endif
+        mpWidgetManager->setWidget(widgetPath);
+
+        emit widgetLoaded();
+    }
 }
 
 void MainWindow::onHelpShow()
@@ -127,3 +147,11 @@ void MainWindow::onHelpHide()
 {
     mpHelpViewer->hide();
 }
+
+void MainWindow::onFileSave()
+{
+#ifdef ADD_EDITOR
+    mpTabs->saveCurrentDoc();
+#endif
+}
+

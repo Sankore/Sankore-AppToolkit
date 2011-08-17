@@ -9,6 +9,9 @@
 DocumentTab::DocumentTab(QWidget *parent, const char *name):QTabWidget(parent)
 {
     setObjectName(name);
+    setTabsClosable(true);
+
+    connect(this, SIGNAL(tabCloseRequested(int)), this, SLOT(onTabCloseRequest(int)));
 }
 
 DocumentTab::~DocumentTab()
@@ -46,6 +49,8 @@ void DocumentTab::addPage(const QString &path)
 
         // Finally add a new tab
         addTab(pWidget, name);
+
+        connect(pWidget, SIGNAL(modified()), this, SLOT(onDocModified()));
     }
 
     // Show this widget
@@ -54,6 +59,10 @@ void DocumentTab::addPage(const QString &path)
 
 void DocumentTab::removePage(const QString &name)
 {
+    // Disconnect the slot
+    disconnect(mWidgets[name], SIGNAL(modified()), this, SLOT(onDocModified()));
+
+    // remove the widget
     mWidgets.remove(name);
 }
 
@@ -70,7 +79,10 @@ eDocType DocumentTab::getDocType(const QString &docName)
             "xhtml" == qsExtension ||
             "txt" == qsExtension ||
             "rtf" == qsExtension ||
-            "csv" == qsExtension)
+            "csv" == qsExtension ||
+            "h" == qsExtension ||
+            "c" == qsExtension ||
+            "cpp" == qsExtension)
     {
         retType = eDocType_Text;
     }
@@ -83,5 +95,45 @@ void DocumentTab::onFileDoubleClicked(const QString &path)
     if("" != path)
     {
         addPage(path);
+    }
+}
+
+void DocumentTab::onTabCloseRequest(int index)
+{
+    // Get the tab name and call RemovePage
+    QString qsTab = tabText(index);
+    removePage(qsTab);
+    removeTab(index);
+}
+
+void DocumentTab::clear()
+{
+    mWidgets.clear();
+    QTabWidget::clear();
+}
+
+void DocumentTab::saveCurrentDoc()
+{
+    if(count())
+    {
+        DocumentWidget* pCrntWidget = dynamic_cast<DocumentWidget*>(currentWidget());
+        if(NULL != pCrntWidget)
+        {
+            pCrntWidget->save();
+
+            QFileInfo fi(pCrntWidget->name());
+            setTabText(currentIndex(), fi.fileName());
+        }
+    }
+}
+
+void DocumentTab::onDocModified()
+{
+    DocumentWidget* pCrntWidget = dynamic_cast<DocumentWidget*>(currentWidget());
+    if(NULL != pCrntWidget)
+    {
+        QFileInfo fi(pCrntWidget->name());
+        QString qsNewTitle = QString("%0*").arg(fi.fileName());
+        setTabText(currentIndex(), qsNewTitle);
     }
 }

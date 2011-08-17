@@ -25,3 +25,8 @@ QString DocumentWidget::name()
 {
     return mName;
 }
+
+void DocumentWidget::save()
+{
+    // Will be overloaded by the children
+}

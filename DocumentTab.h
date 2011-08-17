@@ -23,9 +23,15 @@ public:
 
     void addPage(const QString& path);
     void removePage(const QString& name);
+    void clear();
+    void saveCurrentDoc();
 
 public slots:
     void onFileDoubleClicked(const QString& path);
+
+private slots:
+    void onTabCloseRequest(int index);
+    void onDocModified();
 
 private:
     eDocType getDocType(const QString& docName);

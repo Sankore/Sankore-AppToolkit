@@ -7,6 +7,7 @@
 
 class DocumentWidget : public QWidget
 {
+    Q_OBJECT
 public:
     DocumentWidget(const QString& docName, const char* name="DocumentWidget", QWidget* parent=0);
     ~DocumentWidget();
@@ -14,9 +15,15 @@ public:
     QWidget* widget();
     QString name();
 
+    virtual void save();
+
+signals:
+    void modified();
+
 protected:
     QWidget* mpWidget;
     QString mName;
+    QString mPath;
     QVBoxLayout* mpLayout;
 };
 

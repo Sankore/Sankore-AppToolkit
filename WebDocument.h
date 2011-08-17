@@ -7,9 +7,12 @@
 
 class WebDocument : public DocumentWidget
 {
-    public:
+public:
     WebDocument(const QString& docName, const char* name="TextDocument", QWidget* parent=0);
     ~WebDocument();
+
+protected:
+    void save();
 };
 
 
