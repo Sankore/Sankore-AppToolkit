@@ -39,7 +39,8 @@ SOURCES += main.cpp\
     HelpViewer.cpp \
     TextDocument.cpp \
     DocumentWidget.cpp \
-    WebDocument.cpp
+    WebDocument.cpp \
+    SyntaxHighlighter.cpp
 
 HEADERS  += mainwindow.h \
     globalDefs.h \
@@ -53,7 +54,8 @@ HEADERS  += mainwindow.h \
     HelpViewer.h \
     TextDocument.h \
     DocumentWidget.h \
-    WebDocument.h
+    WebDocument.h \
+    SyntaxHighlighter.h
 
 #Build directory
 BUILD_DIR = build
@@ -116,10 +118,13 @@ macx {
     DOC.path = "$$RESOURCES_DIR"
     EXAMPLE_WIDGET.files = "example.wgt"
     EXAMPLE_WIDGET.path = "$$RESOURCES_DIR"
+    SAMPLE_WIDGET.files = "sample.wgt"
+    SAMPLE_WIDGET.path = "$$RESOURCES_DIR"
 
     QMAKE_BUNDLE_DATA += MSG_FILE
     QMAKE_BUNDLE_DATA += DOC
     QMAKE_BUNDLE_DATA += EXAMPLE_WIDGET
+    QMAKE_BUNDLE_DATA += SAMPLE_WIDGET
 
     # Generate some files related to versions
     system(mkdir -p $$BUILD_DIR)
@@ -140,6 +145,8 @@ linux-g++ {
     DOC.path = $$DESTDIR
     EXAMPLE_WIDGET.files = "example.wgt"
     EXAMPLE_WIDGET.path = $$DESTDIR
+    SAMPLE_WIDGET.files = "sample.wgt"
+    SAMPLE_WIDGET.path = $$DESTDIR
 
     system(mkdir -p $$BUILD_DIR)
     system(echo "$$VERSION" > $$BUILD_DIR/version)
@@ -156,6 +163,8 @@ linux-g++-64 {
     DOC.path = $$DESTDIR
     EXAMPLE_WIDGET.files = "example.wgt"
     EXAMPLE_WIDGET.path = $$DESTDIR
+    SAMPLE_WIDGET.files = "sample.wgt"
+    SAMPLE_WIDGET.path = $$DESTDIR
 
     system(mkdir -p $$BUILD_DIR)
     system(echo "$$VERSION" > $$BUILD_DIR/version)

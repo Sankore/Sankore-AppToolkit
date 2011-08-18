@@ -4,6 +4,7 @@
 #include <QTextEdit>
 
 #include "DocumentWidget.h"
+#include "SyntaxHighlighter.h"
 
 class TextDocument : public DocumentWidget
 {
@@ -13,6 +14,11 @@ public:
 
 protected:
     void save();
+
+private:
+    void setHighlighter();
+
+    SyntaxHighlighter* mpHL;
 };
 
 #endif // TEXTDOCUMENT_H

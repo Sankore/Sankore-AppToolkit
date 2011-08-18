@@ -76,7 +76,10 @@ void MainWindow::createMenuBar()
     mpMenuFile = new QMenu(tr("File"), this);
     mpMenuBar->addMenu(mpMenuFile);
 
-    QAction* pAction = mpMenuFile->addAction(tr("Open"));
+    QAction* pAction = mpMenuFile->addAction(tr("New Project"));
+    connect(pAction, SIGNAL(triggered()), this, SLOT(onFileNewProject()));
+
+    pAction = mpMenuFile->addAction(tr("Open"));
     connect(pAction, SIGNAL(triggered()), this, SLOT(onFileOpen()));
 
 #ifdef ADD_EDITOR
@@ -153,5 +156,10 @@ void MainWindow::onFileSave()
 #ifdef ADD_EDITOR
     mpTabs->saveCurrentDoc();
 #endif
+}
+
+void MainWindow::onFileNewProject()
+{
+
 }
 

@@ -1,13 +1,16 @@
 #include <QFile>
+#include <QFileInfo>
 #include <QDebug>
 
 #include "TextDocument.h"
+#include "globalDefs.h"
 
 TextDocument::TextDocument(const QString& docName, const char *name, QWidget *parent):DocumentWidget(docName, name, parent)
 {
     mPath = docName;
     mpWidget = new QTextEdit(this);
     mpLayout->addWidget(mpWidget);
+    setHighlighter();
 
     QFile f(docName);
     if(f.exists())
@@ -35,7 +38,7 @@ TextDocument::TextDocument(const QString& docName, const char *name, QWidget *pa
 
 TextDocument::~TextDocument()
 {
-
+    DELETEPTR(mpHL);
 }
 
 void TextDocument::save()
@@ -56,5 +59,20 @@ void TextDocument::save()
     else
     {
         qDebug() << "Error : file " << mPath << " doesn't exist!";
+    }
+}
+
+void TextDocument::setHighlighter()
+{
+    QFileInfo fi(mPath);
+
+    QString extension = fi.suffix();
+    if("js" == extension)
+    {
+        mpHL = new JSSyntaxHighlighter(mpWidget);
+    }
+    else if("xml" == extension || "htm" == extension || "html" == extension || "xhtml" == extension || "xhtm" == extension)
+    {
+        mpHL = new XMLSyntaxHighlighter(mpWidget);
     }
 }

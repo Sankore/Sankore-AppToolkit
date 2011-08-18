@@ -36,6 +36,7 @@ private slots:
     void onHelpShow();
     void onHelpHide();
     void onFileSave();
+    void onFileNewProject();
 
 private:
     void createMenuBar();
