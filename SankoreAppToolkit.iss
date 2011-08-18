@@ -42,6 +42,8 @@ Type: files ; Name: "{app}\*.dll"
 Source: "..\Sankore-ThirdParty\microsoft\vcredist_x86.exe"; DestDir:"{tmp}"
 Source: ".\build\win32\release\product\*.exe"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: ".\doc\*"; DestDir: "{app}\doc"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "example.wgt"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "sample.wgt"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "msg.config"; DestDir: "{app}"; Flags: ignoreversion
 
 ;Qt base dll
