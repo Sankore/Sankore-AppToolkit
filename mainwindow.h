@@ -5,6 +5,13 @@
 #include <QSplitter>
 #include <QMenu>
 #include <QMenuBar>
+#include <QDialog>
+#include <QDialogButtonBox>
+#include <QPushButton>
+#include <QLabel>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QLineEdit>
 
 #include "ProjectTree.h"
 #include "DocumentTab.h"
@@ -16,6 +23,36 @@
 #define ADD_EDITOR  1
 #define ADD_VIEWER  1
 #define ADD_HELP    1
+
+#define PROJECT_TEMPLATE    "sample.wgt"
+
+class NewProjectDlg : public QDialog
+{
+    Q_OBJECT
+public:
+    NewProjectDlg(const char* name="NewProjectDlg", QWidget* parent=0);
+    ~NewProjectDlg();
+    QString path();
+
+private slots:
+    void onBrowseClicked();
+    void validateFields();
+    void onOkClicked();
+
+private:
+    void copyFolder(QString sourceFolder, QString destFolder);
+
+    QLabel* mpNameLb;
+    QLabel* mpLocationLb;
+    QLineEdit* mpName;
+    QLineEdit* mpLocation;
+    QPushButton* mpBrowseBttn;
+    QDialogButtonBox* mpDlgBttn;
+    QVBoxLayout* mpLayout;
+    QHBoxLayout* mpNameLayout;
+    QHBoxLayout* mpLocationLayout;
+};
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
