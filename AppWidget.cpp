@@ -17,11 +17,20 @@ AppWidget::AppWidget(QWidget *parent, const char *name):QWidget(parent)
   , mpLogger(NULL)
   , mpSettings(NULL)
   , mpWebSettings(NULL)
+  , mpRefreshLayout(NULL)
+  , mpRefreshButton(NULL)
 {
     setObjectName(name);
     mpSplitter = new QSplitter(this);
     mpLayout = new QVBoxLayout();
     setLayout(mpLayout);
+
+    mpRefreshLayout = new QHBoxLayout();
+    mpRefreshButton = new QPushButton(tr("Refresh"), this);
+    mpRefreshLayout->addWidget(mpRefreshButton, 0);
+    mpRefreshLayout->addStretch(1);
+    mpLayout->addLayout(mpRefreshLayout);
+
     mpLayout->addWidget(mpSplitter);
     mpSplitter->setOrientation(Qt::Vertical);
 
@@ -59,10 +68,13 @@ AppWidget::AppWidget(QWidget *parent, const char *name):QWidget(parent)
     //connect(mpJSToQt, SIGNAL(sendMessage(int, const QString&)), this, SLOT(onMessageSentToQt(int, const QString&)));
     connect(this, SIGNAL(widgetLoaded()), mpQtToJS, SLOT(onLoaded()));
     //connect(this, SIGNAL(widgetLoaded()), mpJSToQt, SLOT(onLoaded()));
+    connect(mpRefreshButton, SIGNAL(clicked()), this, SLOT(onRefreshButtonClicked()));
 }
 
 AppWidget::~AppWidget()
 {
+    DELETEPTR(mpRefreshButton);
+    DELETEPTR(mpRefreshLayout);
     DELETEPTR(mpSettings);
     DELETEPTR(mpLogger);
     DELETEPTR(mpQtToJS);
@@ -169,4 +181,12 @@ void AppWidget::onWidgetLoaded()
 void AppWidget::onMessageReceivedFromJS(const QString &msg)
 {
     mpLogger->LogMessage(msg, eMsgDirection_JSToQt);
+}
+
+void AppWidget::onRefreshButtonClicked()
+{
+    if(NULL != mpWebView)
+    {
+        mpWebView->reload();
+    }
 }

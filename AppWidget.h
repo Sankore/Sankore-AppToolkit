@@ -33,6 +33,7 @@ private slots:
     void onMessageSentToJS(int msgID, const QString& label);
     void onMessageSentToQt(int msgID, const QString& label);
     void onMessageReceivedFromJS(const QString& msg);
+    void onRefreshButtonClicked();
 
 private:
     void populateMessages(const QString& filename);
@@ -51,6 +52,8 @@ private:
     QSettings* mpSettings;
     WidgetManager* mpWidgetManager;
     QWebSettings* mpWebSettings;
+    QHBoxLayout* mpRefreshLayout;
+    QPushButton* mpRefreshButton;
 };
 
 #endif // APPWIDGET_H
