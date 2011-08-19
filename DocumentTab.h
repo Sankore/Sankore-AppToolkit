@@ -28,6 +28,7 @@ public:
 
 public slots:
     void onFileDoubleClicked(const QString& path);
+    void onFileRenamed(const QString& oldPath, const QString& newPath);
 
 private slots:
     void onTabCloseRequest(int index);

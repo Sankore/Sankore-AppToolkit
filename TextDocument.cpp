@@ -38,7 +38,7 @@ TextDocument::TextDocument(const QString& docName, const char *name, QWidget *pa
 
 TextDocument::~TextDocument()
 {
-    DELETEPTR(mpHL);
+
 }
 
 void TextDocument::save()

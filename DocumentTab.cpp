@@ -137,3 +137,19 @@ void DocumentTab::onDocModified()
         setTabText(currentIndex(), qsNewTitle);
     }
 }
+
+void DocumentTab::onFileRenamed(const QString &oldPath, const QString &newPath)
+{
+    QFileInfo fiOld(oldPath);
+    QFileInfo fiNew(newPath);
+
+    QString oldName = fiOld.fileName();
+
+    if(mWidgets.contains(oldName))
+    {
+        removeTab(indexOf(mWidgets[oldName]));
+        removePage(oldName);
+        addPage(newPath);
+    }
+
+}

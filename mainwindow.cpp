@@ -52,6 +52,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 #if defined ADD_TREE && defined ADD_EDITOR
     connect(mpTree, SIGNAL(fileDoubleClicked(QString)), mpTabs, SLOT(onFileDoubleClicked(QString)));
+    connect(mpTree, SIGNAL(fileRenamed(QString,QString)), mpTabs, SLOT(onFileRenamed(QString,QString)));
 #endif
 }
 
