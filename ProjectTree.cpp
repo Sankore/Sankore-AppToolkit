@@ -245,7 +245,7 @@ FileManagementDlg::FileManagementDlg(eDialogType type, const char *name, QWidget
     , mpHLayout(NULL)
 {
     setObjectName(name);
-    setFixedSize(300, 80);
+    setFixedSize(300, 100);
     mType = type;
     mpLayout = new QVBoxLayout();
     setLayout(mpLayout);

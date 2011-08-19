@@ -184,7 +184,7 @@ NewProjectDlg::NewProjectDlg(const char *name, QWidget *parent):QDialog(parent)
     , mpLocationLayout(NULL)
 {
     setObjectName(name);
-    setFixedHeight(120);
+    setFixedHeight(150);
     setWindowTitle(tr("Create a new project"));
     // Build the GUI
     mpLayout = new QVBoxLayout();
@@ -264,6 +264,10 @@ QString NewProjectDlg::path()
 void NewProjectDlg::onOkClicked()
 {
     // Copy the folder here
+#ifdef Q_WS_MACX
+    QString qsSampleWidget = QString("%0/../Resources/%1").arg(QApplication::applicationDirPath()).arg(PROJECT_TEMPLATE);
+    copyFolder(qsSampleWidget, path());
+#endif
     copyFolder(PROJECT_TEMPLATE, path());
 
     // Accept the dialog
