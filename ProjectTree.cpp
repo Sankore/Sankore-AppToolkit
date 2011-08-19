@@ -215,7 +215,25 @@ void ProjectTree::onDeleteClicked()
     FileManagementDlg dlg(eDialogType_Delete);
     if(QDialog::Accepted == dlg.exec())
     {
+        QTreeWidgetItem* pCrntItem = currentItem();
+        QString qsPath = pCrntItem->data(0, Qt::UserRole).toString();
+        if(NULL != pCrntItem)
+        {
+            QTreeWidgetItem* pParentItem = pCrntItem->parent();
+            if(NULL != pParentItem)
+            {
+                // Remove the item from the tree
+                pParentItem->removeChild(pCrntItem);
 
+                // Remove the item from the file system
+                QFile f(qsPath);
+                if(f.remove())
+                {
+                    // Notify its destruction
+                    emit fileDeleted(qsPath);
+                }
+            }
+        }
     }
 }
 

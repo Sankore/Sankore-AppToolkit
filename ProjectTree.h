@@ -53,6 +53,7 @@ public:
 signals:
     void fileDoubleClicked(const QString& path);
     void fileRenamed(const QString& oldPath, const QString& newPath);
+    void fileDeleted(const QString& path);
 
 protected:
     void contextMenuEvent(QContextMenuEvent* ev);

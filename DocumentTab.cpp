@@ -151,5 +151,15 @@ void DocumentTab::onFileRenamed(const QString &oldPath, const QString &newPath)
         removePage(oldName);
         addPage(newPath);
     }
+}
 
+void DocumentTab::onFileDeleted(const QString &path)
+{
+    QFileInfo fi(path);
+    QString qsName = fi.fileName();
+    if(mWidgets.contains(qsName))
+    {
+        removeTab(indexOf(mWidgets[qsName]));
+        removePage(qsName);
+    }
 }
