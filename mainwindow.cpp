@@ -170,6 +170,10 @@ void MainWindow::onFileNewProject()
         mpTabs->clear();
 
         mpTree->setProjectPath(dlg.path());
+
+        mpWidgetManager->setWidget(dlg.path());
+
+        emit widgetLoaded();
     }
 }
 
