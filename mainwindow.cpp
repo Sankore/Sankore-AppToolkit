@@ -278,8 +278,6 @@ void NewProjectDlg::onOkClicked()
 
 void NewProjectDlg::copyFolder(QString sourceFolder, QString destFolder)
 {
-    qDebug() << "source folder: " << sourceFolder;
-    qDebug() << "destination folder: " << destFolder;
     QDir sourceDir(sourceFolder);
     if(!sourceDir.exists())
     {
