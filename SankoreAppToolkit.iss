@@ -36,15 +36,15 @@ Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescrip
 
 [InstallDelete]
 ;Type: filesandordirs ; Name: "{app}\doc"
-Type: files ; Name: "{app}\*.dll"
+;Type: files ; Name: "{app}\*.dll"
 
 [Files]
 Source: "..\Sankore-ThirdParty\microsoft\vcredist_x86.exe"; DestDir:"{tmp}"
-Source: ".\build\win32\release\product\*.exe"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: ".\doc\*"; DestDir: "{app}\doc"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "example.wgt"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "sample.wgt"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "msg.config"; DestDir: "{app}"; Flags: ignoreversion
+Source: ".\build\win32\release\product\*.exe"; Excludes: "build,install"; DestDir: "{app}"; Flags: ignoreversion
+Source: ".\doc\*"; Excludes: "build,install";  DestDir: "{app}\doc"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: ".\example.wgt\*"; Excludes: "build,install"; DestDir: "{app}\example.wgt"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: ".\sample.wgt\*"; Excludes: "build,install"; DestDir: "{app}\sample.wgt"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: ".\msg.config"; Excludes: "build,install"; DestDir: "{app}"; Flags: ignoreversion
 
 ;Qt base dll
 Source: "..\Qt-sankore3.1\lib\QtScript4.dll"; DestDir: "{app}"; Flags: ignoreversion
@@ -84,7 +84,7 @@ Root: HKLM64; Subkey: "SOFTWARE\Sankore App Toolkit\Defaults"; ValueType: dword;
 
 [Run]
 Filename: "{tmp}\vcredist_x86.exe";WorkingDir:"{tmp}"
-Filename: "{app}\SankoreAppToolkit.exe"; Description: "{cm:LaunchProgram,Sankore All Toolkit}"; Flags: nowait postinstall
+Filename: "{app}\SankoreAppToolkit.exe"; Description: "{cm:LaunchProgram,Sankore App Toolkit}"; Flags: nowait postinstall
 
 [UninstallDelete]
 ; cleanup and delete whole installation directory
