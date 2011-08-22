@@ -1,6 +1,7 @@
 #include <QAction>
 #include <QApplication>
 #include <QFileDialog>
+#include <QDebug>
 
 #include "mainwindow.h"
 #include "globalDefs.h"
@@ -267,15 +268,18 @@ void NewProjectDlg::onOkClicked()
 #ifdef Q_WS_MACX
     QString qsSampleWidget = QString("%0/../Resources/%1").arg(QApplication::applicationDirPath()).arg(PROJECT_TEMPLATE);
     copyFolder(qsSampleWidget, path());
+#else
+    QString qsSampleWidget = QString("%0%1%2").arg(QApplication::applicationDirPath()).arg(QDir::separator()).arg(PROJECT_TEMPLATE);
+    copyFolder(qsSampleWidget, path());
 #endif
-    copyFolder(PROJECT_TEMPLATE, path());
-
     // Accept the dialog
     accept();
 }
 
 void NewProjectDlg::copyFolder(QString sourceFolder, QString destFolder)
 {
+    qDebug() << "source folder: " << sourceFolder;
+    qDebug() << "destination folder: " << destFolder;
     QDir sourceDir(sourceFolder);
     if(!sourceDir.exists())
     {

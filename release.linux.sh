@@ -66,6 +66,7 @@ mkdir -p install/linux
 cp msg.config build/linux/release/product/msg.config
 cp -r doc build/linux/release/product/doc
 cp -r example.wgt build/linux/release/product/example.wgt
+cp -r sample.wgt build/linux/release/product/sample.wgt
 
 mv build/linux/release/product build/linux/release/SankoreAppToolkit.$VERSION
 cd build/linux/release
