@@ -18,9 +18,7 @@ TextDocument::TextDocument(const QString& docName, const char *name, QWidget *pa
         if(f.open(QIODevice::ReadOnly))
         {
             QByteArray fileContent = f.readAll();
-
-            dynamic_cast<QTextEdit*>(mpWidget)->setText(QString(fileContent));
-
+            dynamic_cast<QTextEdit*>(mpWidget)->document()->setPlainText(QString(fileContent));
             f.close();
         }
         else
