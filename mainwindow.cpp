@@ -274,6 +274,9 @@ void NewProjectDlg::onOkClicked()
     copyFolder(qsSampleWidget, path());
 #else
     QString qsSampleWidget = QString("%0%1%2").arg(QApplication::applicationDirPath()).arg(QDir::separator()).arg(PROJECT_TEMPLATE);
+
+    qDebug() << qsSampleWidget;
+
     copyFolder(qsSampleWidget, path());
 #endif
     // Accept the dialog
