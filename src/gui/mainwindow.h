@@ -69,7 +69,7 @@ signals:
 
 
 private slots:
-    void onFileClose();
+    void onFileQuit();
     void onFileOpen();
     void onHelpShow();
     void onHelpHide();

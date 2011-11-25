@@ -63,7 +63,7 @@ MainWindow::~MainWindow()
     DELETEPTR(mpMenuHelp);
     DELETEPTR(mpHelpViewer);
     DELETEPTR(mpMenuFile);
-    //DELETEPTR(mpMenuTools);
+//    DELETEPTR(mpMenuTools);
     DELETEPTR(mpMenuBar);
     DELETEPTR(mpAppWidget);
     DELETEPTR(mpTabs);
@@ -94,8 +94,8 @@ void MainWindow::createMenuBar()
     mpMenuFile->addSeparator();
 #endif
 
-    pAction = mpMenuFile->addAction(tr("Close"));
-    connect(pAction, SIGNAL(triggered()), this, SLOT(onFileClose()));
+    pAction = mpMenuFile->addAction(tr("Quit"));
+    connect(pAction, SIGNAL(triggered()), this, SLOT(onFileQuit()));
 
 //    mpMenuTools = new QMenu(tr("Tools"), this);
 //    mpMenuBar->addMenu(mpMenuTools);
@@ -118,7 +118,7 @@ WidgetManager* MainWindow::widgetManager()
     return mpWidgetManager;
 }
 
-void MainWindow::onFileClose()
+void MainWindow::onFileQuit()
 {
     QApplication::quit();
 }

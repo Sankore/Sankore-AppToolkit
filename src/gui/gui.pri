@@ -10,7 +10,9 @@ HEADERS      += src/gui/AppWidget.h \
 		src/gui/TextDocument.h \
                 src/gui/WebDocument.h \
 		src/gui/WidgetManager.h \
-    src/gui/OptionsDlg.h
+    src/gui/OptionsDlg.h \
+    src/gui/OptionWidget.h \
+    src/gui/SourceEditorOptionWidget.h
                                
 SOURCES      += src/gui/AppWidget.cpp \
                 src/gui/DocumentTab.cpp \
@@ -24,4 +26,6 @@ SOURCES      += src/gui/AppWidget.cpp \
 		src/gui/TextDocument.cpp \
                 src/gui/WebDocument.cpp \
 		src/gui/WidgetManager.cpp \
-    src/gui/OptionsDlg.cpp
+    src/gui/OptionsDlg.cpp \
+    src/gui/OptionWidget.cpp \
+    src/gui/SourceEditorOptionWidget.cpp
