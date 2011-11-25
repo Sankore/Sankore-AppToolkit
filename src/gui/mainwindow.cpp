@@ -63,6 +63,7 @@ MainWindow::~MainWindow()
     DELETEPTR(mpMenuHelp);
     DELETEPTR(mpHelpViewer);
     DELETEPTR(mpMenuFile);
+    //DELETEPTR(mpMenuTools);
     DELETEPTR(mpMenuBar);
     DELETEPTR(mpAppWidget);
     DELETEPTR(mpTabs);
@@ -95,6 +96,11 @@ void MainWindow::createMenuBar()
 
     pAction = mpMenuFile->addAction(tr("Close"));
     connect(pAction, SIGNAL(triggered()), this, SLOT(onFileClose()));
+
+//    mpMenuTools = new QMenu(tr("Tools"), this);
+//    mpMenuBar->addMenu(mpMenuTools);
+//    pAction = mpMenuTools->addAction(tr("Options..."));
+//    connect(pAction, SIGNAL(triggered()), this, SLOT(onToolsOption()));
 
 #ifdef ADD_HELP
     mpMenuHelp = new QMenu(tr("Help"), this);
@@ -313,4 +319,9 @@ void NewProjectDlg::copyFolder(QString sourceFolder, QString destFolder)
         QString destName = destFolder + QDir::separator() + files[i];
         copyFolder(srcName, destName);
     }
+}
+
+void MainWindow::onToolsOption()
+{
+    mOptionsDlg.show();
 }

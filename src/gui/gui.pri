@@ -9,7 +9,8 @@ HEADERS      += src/gui/AppWidget.h \
 		src/gui/SyntaxHighlighter.h \
 		src/gui/TextDocument.h \
                 src/gui/WebDocument.h \
-		src/gui/WidgetManager.h
+		src/gui/WidgetManager.h \
+    src/gui/OptionsDlg.h
                                
 SOURCES      += src/gui/AppWidget.cpp \
                 src/gui/DocumentTab.cpp \
@@ -22,4 +23,5 @@ SOURCES      += src/gui/AppWidget.cpp \
 		src/gui/SyntaxHighlighter.cpp \
 		src/gui/TextDocument.cpp \
                 src/gui/WebDocument.cpp \
-		src/gui/WidgetManager.cpp
+		src/gui/WidgetManager.cpp \
+    src/gui/OptionsDlg.cpp

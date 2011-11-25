@@ -18,6 +18,7 @@
 #include "AppWidget.h"
 #include "WidgetManager.h"
 #include "HelpViewer.h"
+#include "OptionsDlg.h"
 
 #define ADD_TREE    1
 #define ADD_EDITOR  1
@@ -74,6 +75,7 @@ private slots:
     void onHelpHide();
     void onFileSave();
     void onFileNewProject();
+    void onToolsOption();
 
 private:
     void createMenuBar();
@@ -84,9 +86,11 @@ private:
     AppWidget* mpAppWidget;
     QMenuBar* mpMenuBar;
     QMenu* mpMenuFile;
+    QMenu* mpMenuTools;
     WidgetManager* mpWidgetManager;
     HelpViewer* mpHelpViewer;
     QMenu* mpMenuHelp;
+    OptionsDlg mOptionsDlg;
 };
 
 #endif // MAINWINDOW_H
