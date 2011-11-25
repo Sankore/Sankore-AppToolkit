@@ -3,6 +3,7 @@
 #include <QUrl>
 #include <QCursor>
 #include <QMessageBox>
+#include <QHeaderView>
 
 #include "ProjectTree.h"
 #include "globalDefs.h"
@@ -16,6 +17,8 @@ ProjectTree::ProjectTree(QWidget *parent, const char *name):QTreeWidget(parent)
 {
     setObjectName(name);
     connect(this, SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)), this, SLOT(onItemDoubleClicked(QTreeWidgetItem*,int)));
+
+    header()->hide();
 
     mpContextMenu = new QMenu(this);
     mpActionNew = mpContextMenu->addAction(tr("New File"));
