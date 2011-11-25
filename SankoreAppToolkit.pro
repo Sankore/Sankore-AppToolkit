@@ -26,36 +26,11 @@ macx:OSX_VERSION = "$${VERSION} (r$${SVN_VERSION})"
 #Qt modules
 QT += core gui webkit xml
 
-#Sources & headers
-SOURCES += main.cpp\
-        mainwindow.cpp \
-    ProjectTree.cpp \
-    DocumentTab.cpp \
-    AppWidget.cpp \
-    MessageSelector.cpp \
-    LogWidget.cpp \
-    WidgetManager.cpp \
-    UBWidgetUniboardAPI.cpp \
-    HelpViewer.cpp \
-    TextDocument.cpp \
-    DocumentWidget.cpp \
-    WebDocument.cpp \
-    SyntaxHighlighter.cpp
+INCLUDEPATH += src
 
-HEADERS  += mainwindow.h \
-    globalDefs.h \
-    ProjectTree.h \
-    DocumentTab.h \
-    AppWidget.h \
-    MessageSelector.h \
-    LogWidget.h \
-    WidgetManager.h \
-    UBWidgetUniboardAPI.h \
-    HelpViewer.h \
-    TextDocument.h \
-    DocumentWidget.h \
-    WebDocument.h \
-    SyntaxHighlighter.h
+include(src/api/api.pri)
+include(src/core/core.pri)
+include(src/gui/gui.pri)
 
 #Build directory
 BUILD_DIR = build
