@@ -1,4 +1,5 @@
 #include "UBWidgetUniboardAPI.h"
+#include <QLocale>
 
 UBWidgetUniboardAPI::UBWidgetUniboardAPI(QObject *parent):QObject(parent)
 {
@@ -93,7 +94,7 @@ QString UBWidgetUniboardAPI::locale()
 {
     QString msg = QString(tr("%0 called")).arg("locale");
     emit functionCalled(msg);
-    return "";
+    return QLocale().name();
 }
 
 void UBWidgetUniboardAPI::setPreference(const QString& key, QString value)
