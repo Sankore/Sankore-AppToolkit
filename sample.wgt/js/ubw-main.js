@@ -31,6 +31,17 @@ function init(){
     });
 	
     if(window.sankore){
+        //Defining the Open-Sankore language
+        var lang = "";
+        lang = sankore.locale().substr(0,2);
+   
+        //loading translation file for the current language
+        $("<script type='text/javascript' src='js/translation/" + lang + ".js'>").appendTo("head");
+        //verify that the translation exists
+        if((typeof sankoreLang) == "undefined")
+            //loading the default translation
+            $("<script type='text/javascript' src='js/translation/en.js'>").appendTo("head"); 
+        
         text = window.sankore.preference('noteText', text);
         
         $('.ubw-container').css({
@@ -41,7 +52,7 @@ function init(){
         if(text) 
             textField.val(text);            
         else 
-            textField.val("Enter your notes here ...");       
+            textField.text(sankoreLang.welcome);       
     }		
 				
     window.onresize = function(){

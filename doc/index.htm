@@ -1,15 +1,16 @@
 <html>
 	<head>
-		<title>Sankore API Documentation</title>
+		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+		<title>Open-Sankoré API for W3C widgets Documentation</title>
 		<link rel="stylesheet" type="text/css" href="sankoreapi.css" />
 	</head>
 	<body>
-		<h1>Sankore API Documentation</h1>
+		<h1>Open-Sankoré API for W3C Documentation</h1>
 <pre>
-This documentation describes the Sankore API. This API is useable in the widgets through the 'sankore' object.
+This documentation describes the Open-Sankoré API. This API is useable in the widgets through the 'sankore' object.
 For more information, have a look at the example widget <b>example.wgt</b>.
 
-Here is an example of the way the method <b>returnStatus</b> is called from the widget:
+Here is an example of the way the method <codeInText>returnStatus</codeInText> is called from the widget:
 </pre>
 		
 <pre class="code">
@@ -20,48 +21,48 @@ function startEditing()
 </pre>
 		
 <pre>
-This code sample is the declaration of the method <b>Start Edit</b> that can be called from Sankore. This
+This code sample is the declaration of the method <codeInText>Start Edit</codeInText> that can be called from Sankore. This
 method must be declared in the widget and implemented to do the proper action. In this example, this method
-will display the debug message "startEditing():Ok!" in Sankore.
+will display the debug message "startEditing():Ok!" in Open-Sankoré.
 </pre>
 		
-		<h2>Sankore to Widget</h2>
+		<h2>Open-Sankoré to Widget</h2>
 		<div class="method">
 			<h3>startEditing</h3>
 			<h4>Description</h4>
-			<pre class="description">Put the widget in edit mode.</pre>
+			<pre class="description">Put the widget in edit mode. <b>This method isn't implemented yet</b>.</pre>
 		</div>
 		<div class="method">
 			<h3>stopEditing</h3>
 			<h4>Description</h4>
-			<pre class="description">Put the widget in display mode.</pre>
+			<pre class="description">Put the widget in display mode. <b>This method isn't implemented yet</b>.</pre>
 		</div>
 		<div class="method">
 			<h3>initialize</h3>
 			<h4>Description</h4>
-			<pre class="description">Put the widget in a known state (initial state).</pre>
+			<pre class="description">Put the widget in a known state (initial state).<b>This method isn't implemented yet</b>.</pre>
 		</div>
 		<div class="method">
 			<h3>checkResponse</h3>
 			<h4>Description</h4>
-			<pre class="description">Ask the widget for its response.</pre>
+			<pre class="description">Ask the widget for its response. <b>This method isn't implemented yet</b>.</pre>
 		</div>
 		<div class="method">
 			<h3>reload</h3>
 			<h4>Description</h4>
-			<pre class="description">Reload the widget.</pre>
+			<pre class="description">Reload the widget. <b>This method isn't implemented yet</b>.</pre>
 		</div>
 		<div class="method">
 			<h3>save</h3>
 			<h4>Description</h4>
-			<pre class="description">Save the widget state.</pre>
+			<pre class="description">Save the widget state. <b>This method isn't implemented yet</b>.</pre>
 		</div>
 		<div class="method">
 			<h3>listMethods</h3>
 			<h4>Description</h4>
-			<pre class="description">Ask the widget which method of the Sankore API are used. This method is used to generate the widget buttons.</pre>
+			<pre class="description">Ask the widget which method of the Sankore API are used. This method is used to generate the widget buttons.<b>This method isn't implemented yet</b>.</pre>
 		</div>
-		<h2>Widget to Sankore</h2>
+		<h2>Widget to Open-Sankoré</h2>
 		<div class="method">
 			<h3>returnStatus</h3>
 			<h4>Parameters</h4>
@@ -75,21 +76,21 @@ will display the debug message "startEditing():Ok!" in Sankore.
 			<h4>Parameters</h4>
 			<pre class="parameter">[QStringList] <b>methods</b>: the used API methods list.</pre>
 			<h4>Description</h4>
-			<pre class="description">Return the used API methods of the widget.</pre>
+			<pre class="description">Return the used API methods of the widget.<b>This method isn't implemented yet</b>.</pre>
 		</div>
 		<div class="method">
 			<h3>response</h3>
 			<h4>Parameters</h4>
 			<pre class="parameter">[bool] <b>correct</b>: the response state.</pre>
 			<h4>Description</h4>
-			<pre class="description">Return an indication of the rightness of the widget's response.</pre>
+			<pre class="description">Return an indication of the rightness of the widget's response.<b>This method isn't implemented yet</b>.</pre>
 		</div>
 		<div class="method">
 			<h3>locale</h3>
 			<h4>Return value</h4>
 			<pre class="parameter">[QString] the actual language used by the Sankore application.</pre>
 			<h4>Description</h4>
-			<pre class="description">Return the actual language identifier used by the Sankore application.</pre>
+			<pre class="description">Returns the language and eventually the country of this locale as a string of the form "language-country" or only "language" if the country is unknown, where language is a lowercase, two-letter ISO 639 language code, and country is an uppercase, two-letter ISO 3166 country code.</pre>
 		</div>
 		<div class="method">
 			<h3>setTool</h3>
@@ -250,5 +251,36 @@ will display the debug message "startEditing():Ok!" in Sankore.
 			<h4>Description</h4>
 			<pre class="description">Add the given text on the board, at the given position with the given parameters.</pre>
 		</div>
+        <div class="method">
+            <h3>enableDropOnWidget</h3>
+            <h4>Description</h4>
+            <pre class="description">Notify Open-Sankoré that handle the drag and drop of a resource.</pre>
+        </div>
+        <div class="method">
+            <h3>downloadUrl</h3>
+            <h4>Return Value</h4>
+            <pre class="returnValue">Returns a string containg the resource path relative to the widget directory.</pre>
+            <h4>Parameters</h4>
+            <pre class="parameter">[const QString] <b>objectUrl</b>: source url.</pre>
+            <pre class="parameter">[const QString] <b>extension</b>: source extension. (optional)</pre>
+            <h4>Description</h4>
+            <pre class="description">Notify Open-Sankoré that handle the drag and drop of a resource.</pre>
+        </div>
+		<h2>Multilanguage Widget implementation</h2>
+        <pre>Multilanguage is a very important feature. On the sample widget propose a little template suggestion. The only specific Open-Sankoré interaction is the operating system language requested using <codeInText>locale</codeInText>.
+        <pre class="code">
+var lang = "";
+lang = sankore.locale().substr(0,2);
+$("&#60script type='text/javascript' src='js/translation/" + lang + ".js'&#62").appendTo("head");
+if((typeof sankoreLang) == "undefined")
+     $("&#60script type='text/javascript' src='js/translation/en.js'&#62").appendTo("head"); //default translation
+        </pre>
+        </pre>
+        <pre>This code shows how to retrieve the current language with the <codeInText>locale</codeInText> method. After that we look for translation located in the <codeInText>js/translation</codeInText> directory. If the corresponding translation file is found the <codeInText>sankoreLang</codeInText> object is available. After that a simple call of this object allows you to get the translation. Here an example. 
+        </pre>
+        <pre class="code">aTextField.text(sankoreLang.welcome);</pre>
+		<h2>Drag and Drop items on a widget</h2>
+        <pre>Open-Sankoré does not implement a web server for downloading the dropped items on the widget directory. This is done using the Open-Sankoré object <codeInText>sankore</codeInText> and two methods <codeInText>enableDropOnWidget</codeInText> and <codeInText>downloadUrl</codeInText>.</pre>
+        <pre>As soon as you widget is loaded the <codeInText>enableDropOnWidget</codeInText> method could be used to tell Open-Sankoré that your widget accepts the drops. Once a drop is done on a widget you have to call the <codeInText>downloadUrl</codeInText> to store the resource on the widget directory. The call is a sychronous one an return the relative path to the resource.</pre>
 	</body>
 </html>
